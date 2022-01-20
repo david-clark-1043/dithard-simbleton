@@ -172,9 +172,18 @@ export const industryCustomers = (industry) => {
 export const getAgents = () => {
   const onlyAgents = businesses.map(customerObject => {
     return Object.create(null, {
-      fullname: `${customerObject.purchasingAgent.nameFirst} ${customerObject.purchasingAgent.nameLast}`,
-      company: customerObject.companyName,
-      phoneNumber: customerObject.phoneWork
+      fullName: {
+        value: `${customerObject.purchasingAgent.nameFirst} ${customerObject.purchasingAgent.nameLast}`,
+        enumerable: true
+      },
+      company: {
+        value: customerObject.companyName,
+        enumerable: true
+      },
+      phoneNumber: {
+        value: customerObject.phoneWork,
+        enumerable: true
+      },
     })
   })
   return onlyAgents
