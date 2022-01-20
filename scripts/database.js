@@ -140,3 +140,31 @@ const businesses = [
       addressCity: "Watrous",
     }
   ]
+
+export const getCustomers = () => {
+  const copyOfCustomers = businesses.map(customer => ({...customer}))
+  return copyOfCustomers
+}
+
+const stateFilter = (customerObject, state) => {
+  if (customerObject.addressStateCode === state) {
+    return true
+  }
+  return false
+}
+
+// const newYorkFilter = (customerObject) => {
+//   return stateFilter(customerObject, "NY")
+// }
+
+export const stateCustomers = (state) => {
+  const customers = getCustomers()
+  const filteredCutomers = customers.filter( customer => customer.addressStateCode === state )
+  return filteredCutomers
+}
+
+export const industryCustomers = (industry) => {
+  const customers = getCustomers()
+  const filteredCutomers = customers.filter( customer => customer.companyIndustry === industry )
+  return filteredCutomers
+}
