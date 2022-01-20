@@ -168,3 +168,23 @@ export const industryCustomers = (industry) => {
   const filteredCutomers = customers.filter( customer => customer.companyIndustry === industry )
   return filteredCutomers
 }
+
+export const getAgents = () => {
+  const onlyAgents = businesses.map(customerObject => {
+    return Object.create(null, {
+      fullName: {
+        value: `${customerObject.purchasingAgent.nameFirst} ${customerObject.purchasingAgent.nameLast}`,
+        enumerable: true
+      },
+      company: {
+        value: customerObject.companyName,
+        enumerable: true
+      },
+      phoneNumber: {
+        value: customerObject.phoneWork,
+        enumerable: true
+      },
+    })
+  })
+  return onlyAgents
+}
