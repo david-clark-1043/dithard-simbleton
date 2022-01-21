@@ -2,11 +2,10 @@ import { getCustomers, stateCustomers, industryCustomers } from "./database.js"
 import { CustomerHTML } from "./Business.js"
 
 const contentTarget = document.querySelector(".customers")
+const customers = getCustomers()
 
 export const CustomerList = () => {
     contentTarget.innerHTML += '<h2 class="customers--title">Active Businesses</h2>'
-
-    const customers = getCustomers()
 
     customers.forEach(
         (customerObject) => {
@@ -43,3 +42,29 @@ export const industryCustomerList = (industry) => {
 
     contentTarget.innerHTML += "</article>"
 }
+
+const companySearchResultArticle = document.querySelector(".foundCompanies")
+
+document
+    .querySelector("#companySearch")
+        .addEventListener(
+            "keypress",
+            keyPressEvent => {
+                if (keyPressEvent.charCode === 13) {
+                    /*
+                        When the user presses 'Enter', find the matching business.
+
+                        You can use the `.includes()` string method to
+                        see if a smaller string is part of a larger string.
+
+                        Example: business.companyName.includes(keyPressEvent.target.value)
+                    */
+
+                    const foundBusiness = customers.find(customer => customer.companyName.includes(keyPressEvent.currentTarget.value))/** implement .find() method here */
+                    if(foundBusiness) {
+                        companySearchResultArticle.innerHTML = CustomerHTML(foundBusiness);
+                    } else {
+                        companySearchResultArticle.innerHTML = "<h3>No results</h3>"
+                    }
+                }
+        });
