@@ -1,4 +1,4 @@
-import { getCustomers,stateCustomers, industryCustomers } from "./database.js"
+import { getCustomers, stateCustomers, industryCustomers } from "./database.js"
 import { CustomerHTML } from "./Business.js"
 
 const contentTarget = document.querySelector(".customers")

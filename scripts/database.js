@@ -146,12 +146,12 @@ export const getCustomers = () => {
   return copyOfCustomers
 }
 
-const stateFilter = (customerObject, state) => {
-  if (customerObject.addressStateCode === state) {
-    return true
-  }
-  return false
-}
+// const stateFilter = (customerObject, state) => {
+//   if (customerObject.addressStateCode === state) {
+//     return true
+//   }
+//   return false
+// }
 
 // const newYorkFilter = (customerObject) => {
 //   return stateFilter(customerObject, "NY")
