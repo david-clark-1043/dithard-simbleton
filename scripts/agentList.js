@@ -1,5 +1,6 @@
 import { getAgents } from "./database.js"
 import { AgentHTML } from "./agentHTML.js"
+import { searchAgents } from "./buttonEvents.js"
 
 const contentTarget = document.querySelector(".agents")
 
@@ -15,3 +16,10 @@ export const AgentList = () => {
     );
 
 }
+
+document
+    .querySelector("#search-agents")
+        .addEventListener(
+            "click",
+            searchAgents
+ );
